@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Voting app</title>
+      <link href="http://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet" type="text/css">
+      <link href="/public/css/main.css" rel="stylesheet" type="text/css">
+   </head>
+
+   <header>      
+      <a href="/">
+        <div class="btn btn-text" id="home_a">          
+          <p>Home</p>
+        </div>
+      </a>              
+      <a href="/my_polls">
+        <div class="btn btn-text" id="mPolls">          
+          <p>My Polls</p>
+        </div>
+      </a>              
+      <a href="/new_poll">
+        <div class="btn btn-text" id="nPoll">          
+          <p>New Poll</p>
+        </div>
+      </a>
+      <a href="/logout">
+        <div class="btn btn-text" id="google">          
+          <p>Logout</p>
+        </div>
+      </a>                
+   </header>
+
+   <body>
+    <div class="container">
+      <h1>Voting app</h1>
+      <p>Below are polls hosted by Voting app.</p>
+      <p>Select a poll to see the results and vote, or make a new poll!</p>
+      <div class="polls"></div>
+    </div>    
+    
+      <script type="text/javascript" src="/common/ajax-functions.js"></script>
+      <script type="text/javascript" src="/controllers/pollsController.client.js"></script>      
+   </body>
+</html>

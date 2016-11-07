@@ -3,16 +3,26 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
+var pollSchema = new Schema({
+  id: Schema.Types.ObjectId,
+  title: String,
+  voted: {
+    user_id: [String],
+    ip: [String]
+  },
+  options: [{
+    title: String,
+    votes: Number
+  }]
+});
+
 var User = new Schema({
-    github: {
-        id: String,
-        displayName: String,
-        username: String,
-      	publicRepos: Number
+    profile: {
+      id: String,
+      displayName: String,      
+    	provider: String
     },
-   nbrClicks: {
-      	clicks: Number
-   }
+    polls: [pollSchema]
 });
 
 module.exports = mongoose.model('User', User);

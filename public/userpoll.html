@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Voting app</title>
+      <link href="http://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet" type="text/css">
+      <link href="/public/css/main.css" rel="stylesheet" type="text/css">
+   </head>
+
+   <header>    
+      <a href="/">
+        <div class="btn btn-text" id="home_a">          
+          <p>Home</p>
+        </div>
+      </a>              
+      <a href="/my_polls">
+        <div class="btn btn-text" id="mPolls">          
+          <p>My Polls</p>
+        </div>
+      </a>              
+      <a href="/new_poll">
+        <div class="btn btn-text" id="nPoll">          
+          <p>New Poll</p>
+        </div>
+      </a>
+      <a href="/logout">
+        <div class="btn btn-text" id="google">          
+          <p>Logout</p>
+        </div>
+      </a>                    
+   </header>
+
+   <body>
+
+   <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=129437027527724";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+    <div class="container">
+      <h1>Poll Title</h1>
+      <div class="col6" id="left">
+        <p>I'd like to vote for:</p>
+        <form action="vote" method="post" enctype="multipart/form-data">
+          <select name="options" required>
+            <option value="" disabled selected>Choose an option</option>          
+          </select>
+          <input class="btn" id="btn-submit" type="button" value="Submit">     
+        </form>
+          <div class="fb-share-button" data-href="https://sergejuss-voting.herokuapp.com" data-layout="button" data-size="large" data-mobile-iframe="false"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsergejuss-voting.herokuapp.com%2F&amp;src=sdkpreparse">Share</a></div>
+      </div>
+      <div class="col6" id="right"></div>  
+    </div>
+    
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script type="text/javascript" src="/common/ajax-functions.js"></script>
+    <script type="text/javascript" src="/controllers/indPollController.client.js"></script>      
+   </body>
+</html>
