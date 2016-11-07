@@ -9,7 +9,7 @@
 
     var facebookButton = document.querySelector('.fb-share-button');
     facebookButton.setAttribute('data-href', window.location.origin + window.location.pathname);
-    facebookButton.setAttribute('href', encodeURIComponent(window.location.origin + window.location.pathname));
+    //facebookButton.setAttribute('href', encodeURIComponent(window.location.origin + window.location.pathname));
 
     var submitButton = document.querySelector('#btn-submit');
     var isEventListenerSet = false;    
