@@ -8,28 +8,28 @@
    	var apiUrl = window.location.origin + '/api' + window.location.pathname; 
 
     var facebookButton = document.querySelector('.fb-share-button');
-    facebookButton.setAttribute('data-href', window.location.origin + window.location.pathname);
-    //facebookButton.setAttribute('href', encodeURIComponent(window.location.origin + window.location.pathname));
+    facebookButton.setAttribute('data-href', window.location.origin + window.location.pathname);    
 
     var submitButton = document.querySelector('#btn-submit');
     var isEventListenerSet = false;    
 
     var bodyWidth = d3.select("body")[0][0]['clientWidth'];    
-    var w = bodyWidth * .35 * .9;
+    var w = bodyWidth * .35 * 1;
+    w = Math.min(w, 320);
     var h = w;
     var offset = 0;
     var padding={
         top: 0,
         right: 0,
-        bottom: 300,
+        bottom: 100,
         left: 0
       };
     
-    var radius = Math.min(w, h) / 2;
+    var radius = Math.min(w, h) / 2;    
     var color = d3.scale.category20c();
     var arc = d3.svg.arc()
       .outerRadius(radius - 10)
-      .innerRadius(radius - 120);
+      .innerRadius(radius - 100);
 
     var pie = d3.layout.pie()
       .sort(null)
@@ -61,9 +61,11 @@
       if (!isEventListenerSet) {
         submitButton.addEventListener('click', function () {
           var postData = {pollId: pollObject['_id'], option: dropDown.options.selectedIndex-1}; 
-          ajaxFunctions.ajaxPostRequest(window.location.origin + '/poll/vote', postData, function (response) {
-              updatePoll(response);
-            });
+          if (dropDown.options.selectedIndex === 0) { alert('Please select valid option.'); } else {
+            ajaxFunctions.ajaxPostRequest(window.location.origin + '/poll/vote', postData, function (response) {
+                updatePoll(response);
+              });
+          }
         }, false);
         isEventListenerSet = true;
       }
